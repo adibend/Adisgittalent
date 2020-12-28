@@ -23,6 +23,19 @@ node('LinuxSlave') {
                     echo ('[end] prepare')
         }
 
+        stage('build') {
+                    echo ('[start] build')
+					
+                    echo "[INFO]${Blue} Building webapp ${Color_Off}"
+					sh '''
+                            cd gittalent-frontend
+                            npm install
+                            ng build
+                            docker build -t frontend .
+                        '''
+					
+                    echo ('[end] build')
+        }
                 
 
     }  

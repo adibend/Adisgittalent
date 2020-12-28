@@ -42,8 +42,6 @@ node('prebuild') {
 }
 
 
-    echo "[Info]${Blue} Eneded pipeline succesfully ${Color_Off}"
-
-}
+echo "[Info]${Blue} Eneded pipeline succesfully ${Color_Off}"
 
 return this

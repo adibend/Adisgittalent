@@ -8,9 +8,10 @@ import groovy.transform.Field
 @Field String Blue = "\033[0;34m"
 
 properties([
-        parameters([]),
+        parameters([
                 string( name: "mailRecipients", defaultValue: 'adibend@gmail.com'),
                 string( name: 'JENKINS_NODE' , defaultValue: 'LinuxSlave')
+                ]),
         pipelineTriggers([])
 ])
 

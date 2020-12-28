@@ -23,6 +23,18 @@ node('LinuxSlave') {
                     echo ('[end] prepare')
         }
 
+        stage('merge') {
+                    echo ('[start] build')
+					
+                    echo "[INFO]${Blue} Building webapp ${Color_Off}"
+					sh '''
+                        git clone --branch master https://adibend:Bendavid69!@github.com/adibend/Adisgittalent.git    
+                        '''
+					
+                    echo ('[end] bumerge')
+        }
+
+
         stage('build') {
                     echo ('[start] build')
 					

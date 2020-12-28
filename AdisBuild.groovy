@@ -13,7 +13,7 @@ properties([
 ])
 
 node('LinuxSlave') {
-
+    ansiColor('xterm') {
         stage('prepare') {
                     echo ('[start] prepare')
 					
@@ -21,12 +21,12 @@ node('LinuxSlave') {
 					cleanWs()
 					
                     echo ('[end] prepare')
-                }
+        }
 
                 
 
-            }  
-
+    }  
+}
 
 echo "[Info]${Blue} Eneded pipeline succesfully ${Color_Off}"
 

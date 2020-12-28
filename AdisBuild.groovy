@@ -11,8 +11,7 @@ properties([
         parameters([
                 string( name: "mailRecipients", defaultValue: 'adibend@gmail.com'),
                 string( name: 'JENKINS_NODE' , defaultValue: 'LinuxSlave')
-                ]),
-        pipelineTriggers([])
+                ])
 ])
 
 node('LinuxSlave') {

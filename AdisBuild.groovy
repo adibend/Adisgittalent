@@ -24,14 +24,14 @@ node('LinuxSlave') {
         }
 
         stage('merge') {
-                    echo ('[start] build')
+                    echo ('[start] merge')
 					
                     echo "[INFO]${Blue} Building webapp ${Color_Off}"
 					sh '''
                         git clone --branch master https://adibend:Bendavid69!@github.com/adibend/Adisgittalent.git    
                         '''
 					
-                    echo ('[end] bumerge')
+                    echo ('[end] merge')
         }
 
 
@@ -40,7 +40,7 @@ node('LinuxSlave') {
 					
                     echo "[INFO]${Blue} Building webapp ${Color_Off}"
 					sh '''
-                            cd gittalent-frontend
+                            cd Adisgittalent/gittalent-frontend
                             npm install
                             ng build
                             docker build -t frontend .

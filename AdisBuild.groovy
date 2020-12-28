@@ -13,13 +13,8 @@ properties([
 ])
 
 node('prebuild') {
-    timestamps {
-        ansiColor('xterm') {
 
-            timestamp = sh(returnStdout: true, script: 'date +%s').trim()
-
-            try {
-                stage('prepare') {
+        stage('prepare') {
                     echo ('[start] prepare')
 					
                     echo "[INFO]${Blue} Cleaning workspace ${Color_Off}"
@@ -31,12 +26,6 @@ node('prebuild') {
                 
 
             }  
-
-
-                }
-            }
-        }
-
 
 
 echo "[Info]${Blue} Eneded pipeline succesfully ${Color_Off}"

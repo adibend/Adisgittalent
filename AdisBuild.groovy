@@ -25,8 +25,6 @@ node('prebuild') {
                     echo "[INFO]${Blue} Cleaning workspace ${Color_Off}"
 					cleanWs()
 					
-                    git clone --branch master https://adibend:Bendavid69!@github.com/adibend/Adisgittalent.git
-
                     echo ('[end] prepare')
                 }
 

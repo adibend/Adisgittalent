@@ -12,7 +12,7 @@ properties([
         pipelineTriggers([])
 ])
 
-node('prebuild') {
+node('LinuxSlave') {
 
         stage('prepare') {
                     echo ('[start] prepare')

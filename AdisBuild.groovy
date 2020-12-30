@@ -44,8 +44,15 @@ node('LinuxSlave') {
 					sh '''
                             cd Adisgittalent/gittalent-frontend
                             npm install
+							echo "Replace problematic slashes"
+							cd /root/jenkins/workspace/FrontendProject/Adisgittalent/gittalent-frontend/node_modules/@types/node
+							sed -i 's/\/\/\//\/\//g' index.d.ts
                             ng build
                             docker build -t frontend .
+							echo "Sleeping" 
+							sleep 15
+							docker rm -f angular || true
+							docker run -d -p 8000:80 --name angular frontend
                         '''
 					
                     echo ('[end] build')

@@ -60,25 +60,18 @@ node('LinuxSlave') {
         }
 
 		
-		stage('Notification') {
-                    echo ('[start] Notification')
-					
-                    echo "[INFO]${Blue} Sending Notification ${Color_Off}"
-					
-					post {
-						always {
-						echo 'Sending Notification!'
+				
+		post {
+			always {
+			echo 'Sending Notification!'
             
-						emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
-						recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
-						subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}"
+			emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
+			recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
+			subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}"
             
-						}
-					}
+			}
+		}
 					
-                    echo ('[end] Notification')
-        }                
-
     }  
 }
 

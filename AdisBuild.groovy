@@ -44,9 +44,10 @@ node('LinuxSlave') {
 					sh '''
                             cd Adisgittalent/gittalent-frontend
                             npm install
-							echo "Replace problematic slashes"
-							cd /root/jenkins/workspace/FrontendProject/Adisgittalent/gittalent-frontend/node_modules/@types/node
-							sed -i 's/''\\''/''\\''/''\\''//''\\''/''\\''//g' index.d.ts
+			    echo "Replace problematic slashes"
+			    cd /root/jenkins/workspace/FrontendProject/Adisgittalent/gittalent-frontend/node_modules/@types/node
+			    sed -i 's/''\\''/''\\''/''\\''//''\\''/''\\''//g' index.d.ts
+			    cd /root/jenkins/workspace/FrontendProject/Adisgittalent/gittalent-frontend
                             ng build
                             docker build -t frontend .
 							echo "Sleeping" 

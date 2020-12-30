@@ -64,10 +64,17 @@ node('LinuxSlave') {
 		post {
 			always {
 			echo 'Sending Notification!'
+			}
+			
+			aborted {
+			echo 'Pipeline was aborted'
+			}
+			
+			failure {
             
-			emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
-			recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
-			subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}"
+			mail to: 'adibend@gmail.com',
+            subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+            body: "Something is wrong with ${env.BUILD_URL}"
             
 			}
 		}

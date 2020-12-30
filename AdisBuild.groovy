@@ -66,8 +66,13 @@ node('LinuxSlave') {
                     echo "[INFO]${Blue} Sending Notification ${Color_Off}"
 					
 					post {
-					always {
-					emailext body: 'Status Email', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Status Email'
+						always {
+						echo 'Sending Notification!'
+            
+						emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
+						recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
+						subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}"
+            
 						}
 					}
 					

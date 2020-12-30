@@ -61,23 +61,15 @@ node('LinuxSlave') {
 
 		
 				
-		post {
-			always {
-			echo 'Sending Notification!'
-			}
+		stage('notification') {
 			
-			aborted {
-			echo 'Pipeline was aborted'
-			}
-			
-			failure {
             
 			mail to: 'adibend@gmail.com',
-            subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
-            body: "Something is wrong with ${env.BUILD_URL}"
+            subject: "Status of Pipeline: ${currentBuild.fullDisplayName}",
+            body: "Here isthe Status of Pipeline with ${env.BUILD_URL}"
             
-			}
 		}
+
 					
     }  
 }

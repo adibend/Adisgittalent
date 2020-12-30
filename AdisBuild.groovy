@@ -58,7 +58,21 @@ node('LinuxSlave') {
 					
                     echo ('[end] build')
         }
-                
+
+		
+		stage('Notification') {
+                    echo ('[start] Notification')
+					
+                    echo "[INFO]${Blue} Sending Notification ${Color_Off}"
+					
+					post {
+					always {
+					emailext body: 'Status Email', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Status Email'
+						}
+					}
+					
+                    echo ('[end] Notification')
+        }                
 
     }  
 }

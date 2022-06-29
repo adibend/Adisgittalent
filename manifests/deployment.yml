@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: adibendadisgittalent 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: adibendadisgittalent
+  template:
+    metadata:
+      labels:
+        app: adibendadisgittalent 
+    spec:
+      containers:
+        - name: adibendadisgittalent 
+          image: acrsandboxtest01.azurecr.io/adibendadisgittalent
+          ports:
+          - containerPort: 80
